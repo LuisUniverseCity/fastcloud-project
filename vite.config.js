@@ -12,8 +12,15 @@ export default defineConfig({
       targets: [
         { src: ['server/*', '!server/config'], dest: '../' },
         { src: 'server/config/prod/*', dest: '../config' },
-        { src: 'package.json', dest: '../' },
-        { src: 'package-lock.json', dest: '../' }
+        {
+          src: 'package.json', dest: '../', transform: (content) => {
+            const pkg = JSON.parse(content.toString());
+            delete pkg.devDependencies;
+            return JSON.stringify(pkg, null, 2)
+          }
+        },
+        { src: 'package-lock.json', dest: '../' },
+        { src: 'server/config/pm2/*', dest: '../' }
       ]
     })
   ],
