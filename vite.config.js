@@ -20,7 +20,7 @@ export default defineConfig({
           }
         },
         { src: 'package-lock.json', dest: '../' },
-        { src: 'server/config/pm2/*', dest: '../' }
+        { src: 'server/config/pm2/*', dest: '../config' }
       ]
     })
   ],
