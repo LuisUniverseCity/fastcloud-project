@@ -16,6 +16,12 @@ export default defineConfig({
           src: 'package.json', dest: '../', transform: (content) => {
             const pkg = JSON.parse(content.toString());
             delete pkg.devDependencies;
+            delete pkg.dependencies["@tailwindcss/vite"];
+            delete pkg.dependencies["lucide-react"];
+            delete pkg.dependencies["react"];
+            delete pkg.dependencies["react-dom"];
+            delete pkg.dependencies["react-router-dom"];
+            delete pkg.dependencies["tailwindcss"];
             return JSON.stringify(pkg, null, 2)
           }
         },
@@ -31,3 +37,4 @@ export default defineConfig({
     outDir: 'output/dist'
   }
 })
+
