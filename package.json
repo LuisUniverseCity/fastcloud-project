@@ -7,6 +7,7 @@
     "dev": "nodemon ./server/app.js",
     "build": "vite build",
     "deploy": "npx pm2 start ./config/eco.config.cjs",
+    "restart": "npx pm2 restart ./config/eco.config.cjs",
     "delete": "npx pm2 delete ./config/eco.config.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -36,3 +37,4 @@
     "vite-plugin-static-copy": "^3.1.4"
   }
 }
+
