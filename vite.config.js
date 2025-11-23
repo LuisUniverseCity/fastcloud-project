@@ -10,7 +10,7 @@ export default defineConfig({
     react(),
     viteStaticCopy({
       targets: [
-        { src: ['server/*', '!server/config'], dest: '../' },
+        { src: ['server/*', '!server/config', '!server/.env'], dest: '../' },
         { src: 'server/config/prod/*', dest: '../config' },
         {
           src: 'package.json', dest: '../', transform: (content) => {
@@ -22,6 +22,17 @@ export default defineConfig({
             delete pkg.dependencies["react-dom"];
             delete pkg.dependencies["react-router-dom"];
             delete pkg.dependencies["tailwindcss"];
+            delete pkg.dependencies["build"];
+            delete pkg.dependencies["dev"];
+            if (pkg.scripts && pkg.scripts.deploy) {
+              pkg.scripts.deploy = "npx pm2 start ./config/eco.config.cjs";
+            }
+            if (pkg.scripts && pkg.scripts.restart) {
+              pkg.scripts.restart = "npx pm2 restart ./config/eco.config.cjs";
+            }
+            if (pkg.scripts && pkg.scripts.delete) {
+              pkg.scripts.delete = "npx pm2 delete ./config/eco.config.cjs";
+            }
             return JSON.stringify(pkg, null, 2)
           }
         },
