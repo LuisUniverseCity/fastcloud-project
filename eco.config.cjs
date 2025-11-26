@@ -5,7 +5,8 @@ module.exports =  {
             script: './server/app.js', // Route to the app - Don't change
             env: {
                 PORT: 3801 // Select a port
-            }
+            },
+            watch: true // Hot reload - Don't change
         }
     ]
 }
