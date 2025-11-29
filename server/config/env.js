@@ -2,17 +2,18 @@ import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { resolve } from 'path';
+import dotenv from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-export default async function React(app){
+export async function React(app) {
 
-const vite = await createViteServer({
-  server: { middlewareMode: "html" },
-  root: resolve(__dirname, "../../")
-});
+  const vite = await createViteServer({
+    server: { middlewareMode: "html" },
+    root: resolve(__dirname, "../../")
+  });
 
   app.use(vite.middlewares);
 
@@ -27,4 +28,8 @@ const vite = await createViteServer({
       res.status(500).end(e.message);
     }
   });
+}
+
+export function Dotenv() {
+  dotenv.config({ path: './server/.env' });
 }

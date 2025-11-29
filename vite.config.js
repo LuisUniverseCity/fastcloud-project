@@ -24,6 +24,8 @@ export default defineConfig({
             delete pkg.dependencies["tailwindcss"];
             delete pkg.dependencies["build"];
             delete pkg.dependencies["dev"];
+            delete pkg.scripts.lint
+            delete pkg.scripts.preview
             if (pkg.scripts && pkg.scripts.deploy) {
               pkg.scripts.deploy = "npx pm2 start ./config/eco.config.cjs";
             }
