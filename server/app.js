@@ -21,7 +21,7 @@ async function server() {
 
     app.get("/api", (req, res) => {
         res.json({
-            "this": "is a GET"
+            "Hello": "World"
         })
         return res
     })
