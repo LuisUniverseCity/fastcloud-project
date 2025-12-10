@@ -1,5 +1,4 @@
 import express from 'express';
-import cors from 'cors';
 import { React, Dotenv } from './config/env.js';
 Dotenv()
 
@@ -8,13 +7,6 @@ const port = 2828
 async function server() {
     const app = express()
     app.use(express.json())
-    app.use(cors());
-    /*
-    app.use(cors({
-      origin: 'http://example.com', // allow only this origin
-      methods: ['GET', 'POST'],     // allow only these methods
-    }));
-    */
 
     // BACKEND CODE HERE
     // ----------------------------------------------------------------------------------------
