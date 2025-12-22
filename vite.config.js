@@ -24,6 +24,7 @@ export default defineConfig({
             delete pkg.dependencies["tailwindcss"];
             delete pkg.dependencies["build"];
             delete pkg.dependencies["dev"];
+            delete pkg.dependencies["qrcode"];
             delete pkg.scripts.lint
             delete pkg.scripts.preview
             if (pkg.scripts && pkg.scripts.deploy) {
